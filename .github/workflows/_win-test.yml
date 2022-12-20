@@ -51,7 +51,7 @@ jobs:
   test:
     needs: filter
     # Don't run on forked repos or empty test matrix
-    if: github.repository_owner == 'pytorch' && needs.filter.outputs.is-test-matrix-empty == 'False'
+    if: ${{ github.repository_owner == 'pytorch' }} && needs.filter.outputs.is-test-matrix-empty == 'False'
     strategy:
       matrix: ${{ fromJSON(needs.filter.outputs.test-matrix) }}
       fail-fast: false
